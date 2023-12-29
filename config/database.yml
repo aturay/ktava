@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+  port: <%= ENV['DATABASE_PORT'] || 5432 %>
+  username: atur
+  password: password
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: ktava_dev
+
+test:
+  <<: *default
+  database: ktava_test
+
+production:
+  <<: *default
+  database: ktava_prod
