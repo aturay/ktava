@@ -1,11 +1,11 @@
-class Tag < ApplicationRecord
-  has_many :books
+class Language < ApplicationRecord
+  has_and_belongs_to_many :books
 
   def self.ransackable_associations(auth_object = nil)
     ["books"]
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    %w(created_at description id id_value name tag_type updated_at)
+    ["created_at", "id", "id_value", "name", "updated_at"]
   end
 end
